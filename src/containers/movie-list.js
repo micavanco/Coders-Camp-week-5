@@ -15,7 +15,7 @@ class MovieList extends Component {
     if(this.props.movies){
       return this.props.movies.map((movie) => {
         return <li className="movie-list-item" key={movie.id} onMouseEnter={this.onHover.bind(this)} onMouseLeave={this.onLeave.bind(this)}>
-          {<MoviePopUp movie={movie}/>}
+          {<MoviePopUp movie={movie} />}
           {<img className="poster" src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}/>}
           </li>;
       });
@@ -25,7 +25,10 @@ class MovieList extends Component {
 onHover(e)
 {
   this.state.currentElement = e.target.parentElement.firstElementChild;
-  this.state.currentElement.style.display = 'block';
+  if(this.state.currentElement.className === 'movie-pop-ups')
+    this.state.currentElement.style.display = 'block';
+  else
+    this.state.currentElement = null;
 }
 
 onLeave(e)

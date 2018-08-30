@@ -2,10 +2,16 @@ import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchData } from '../actions/index.js';
+import { favoriteData } from '../actions/get-favorites.js';
 
 class Categories extends Component {
   constructor(props) {
     super(props);
+
+    let movies = new Array();
+    let added = new Array();
+    localStorage.setItem('movies', movies);
+    localStorage.setItem('added', added);
 
     this.onClickHandle = this.onClickHandle.bind(this);
   }
@@ -17,6 +23,8 @@ class Categories extends Component {
   onClickHandle(e){
     if(e.target.id !== 'favorites')
       this.props.fetchData(e.target.id);
+    else
+      this.props.favoriteData();
     Array.from(e.target.parentNode.childNodes).map((li)=>{
         if(li.classList.contains('selected-category')) {
           li.classList.remove('selected-category');
@@ -41,7 +49,7 @@ class Categories extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators( { fetchData }, dispatch);
+  return bindActionCreators( { fetchData, favoriteData }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(Categories);

@@ -70,12 +70,17 @@ body {
 .movie-pop-ups > p
 {
   font-size: 12px;
+  overflow-y: scroll;
+  width: 280px;
+  padding: 10px;
+  height: 200px;
 }
 
 .movie-pop-ups > h1
 {
   text-align: left;
   font-size: 200%;
+  height: 100px;
 }
 
 .star
@@ -94,4 +99,83 @@ body {
   margin-left: 3px;
   font-size: 20px;
   color: yellow;
+}
+
+.add-favorites
+{
+  background: url("../img/add.png");
+  background-size: contain;
+  height: 50px;
+  width: 50px;
+  float: left;
+}
+
+.add-favorites:hover
+{
+  background: url("../img/add2.png");
+  background-size: contain;
+  height: 50px;
+  width: 50px;
+}
+
+.remove-favorites
+{
+  background: url("../img/rm.png");
+  background-size: contain;
+  height: 50px;
+  width: 50px;
+  float: left;
+}
+
+.remove-favorites:hover
+{
+  background: url("../img/rm2.png");
+  background-size: contain;
+  height: 50px;
+  width: 50px;
+}
+
+.fav-container h1
+{
+  font-size: 170%;
+  display: none;
+}
+
+.fav-container:hover
+{
+  color: #ffcf39;
+}
+
+.fade-in
+{
+  animation: fade-in 2s 1;
+}
+
+@keyframes fade-in {
+  from {margin-left: 20px;opacity: 0;}
+  to {margin-left: 0;opacity: 1;}
+}
+
+.hideId
+{
+  color: rgba(0,0,0,0);
+  position: absolute;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  color: yellow;
+  background: rgba(0, 0, 0, 0);
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ffcf39;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ba8c33;
 }

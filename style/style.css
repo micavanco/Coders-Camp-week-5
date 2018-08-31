@@ -156,10 +156,9 @@ body {
   to {margin-left: 0;opacity: 1;}
 }
 
-.hideId
+.hiddenId
 {
-  color: rgba(0,0,0,0);
-  position: absolute;
+  display: none;
 }
 
 ::-webkit-scrollbar {

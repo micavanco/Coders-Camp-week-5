@@ -51,7 +51,7 @@ class MoviePopUp extends Component
   onLeave(e)
   {
     if(e.target.nextElementSibling)
-    e.target.nextElementSibling.style.display='none';
+      e.target.nextElementSibling.style.display='none';
   }
 
   Click(e)

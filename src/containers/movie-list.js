@@ -13,12 +13,20 @@ class MovieList extends Component {
 
   movieItems() {
     if(this.props.movies){
-      return this.props.movies.map((movie) => {
-        return <li className="movie-list-item" key={movie.id} onMouseEnter={this.onHover.bind(this)} onMouseLeave={this.onLeave.bind(this)}>
-          {<MoviePopUp movie={movie} />}
-          {<img className="poster" src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}/>}
-          </li>;
-      });
+      if(!this.props.movies.length)
+        if(!document.getElementById('search-input').value)
+          return <h1 id="search-info">Type title in search bar...</h1>;
+        else
+          return <h1 id="search-info">I'm sorry... We didn't find your movie ;(</h1>;
+      else
+        return this.props.movies.map((movie) => {
+          if(movie.poster_path)
+            return <li className="movie-list-item" key={movie.id} onMouseEnter={this.onHover.bind(this)} onMouseLeave={this.onLeave.bind(this)}>
+              {<MoviePopUp movie={movie} />}
+              {<img className="poster" src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}/>}
+              </li>;
+
+        });
     }
 }
 
@@ -33,7 +41,8 @@ onHover(e)
 
 onLeave(e)
 {
-  this.state.currentElement.style.display = 'none';
+  if(this.state.currentElement)
+    this.state.currentElement.style.display = 'none';
 }
 
   render() {

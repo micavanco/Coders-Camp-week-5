@@ -9,19 +9,30 @@ class SearchBar extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { text: ''};
-    this.onInputChange = this.onInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
-  }
-  onInputChange(e) {
-    this.setState({text: e.target.value});
-
   }
 
   onFormSubmit(e) {
     e.preventDefault();
+    let temp = document.querySelector('.categories').childNodes;
+    Array.from(temp).map((li)=>{
+      if(li.classList.contains('selected-category')) {
+        li.classList.remove('selected-category');
+      }
+    });
+    document.getElementById('search').classList.add('selected-category');
+    if(e.target.value)
+      this.props.fetchSearch(e.target.value);
+  }
 
-    this.props.fetchSearch(this.state.text);
+  Focus(e)
+  {
+    e.target.placeholder = '';
+  }
+
+  Blur(e)
+  {
+    e.target.placeholder = 'Search movie title...';
   }
 
   render() {
@@ -29,12 +40,13 @@ class SearchBar extends Component {
       <div className="navbar" >
         <h2>React Movie App</h2>
         <input
+          id="search-input"
           type="text"
           className="from-control search-bar"
-          placeholder="Find a movie"
-          value={this.state.input}
-          onChange={this.onInputChange.bind(this)}
-          onBlur={this.onFormSubmit}
+          placeholder="Search movie title..."
+          onChange={this.onFormSubmit}
+          onFocus={this.Focus}
+          onBlur={this.Blur}
         />
       </div>
     );

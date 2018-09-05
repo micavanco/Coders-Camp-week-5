@@ -96,20 +96,65 @@ body {
 {
   position: fixed;
   width: 85%;
-  height: 70%;
+  height: 600px;
   background-color: black;
   z-index: 10;
   top: 200px;
   left: 130px;
 }
 
+#description-box h2
+{
+  float: left;
+  font-size: 24px;
+  margin-right: 580px;
+  margin-left: 50px;
+  color: #ffcf39;
+}
+
+.window-p
+{
+  margin-left: 550px;
+  margin-right: 60px;
+  margin-top: 140px;
+  text-align: justify-all;
+}
+
+.poster-inside
+{
+  margin-top: 30px;
+  margin-left: 40px;
+  width: 450px;
+  height: 540px;
+  float: left;
+}
+
+.poster-title
+{
+  margin-top: 30px;
+  margin-left: 140px;
+  float: left;
+}
+
 #arrow
 {
+  position: fixed;
+  top: 20px;
   z-index: 11;
   width: 250px;
   height: 150px;
-  background: url("../img/arrow.png") no-repeat;
+  background:
+    url('data:image/svg+xml;utf8,<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="250px" height="150px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#FFFFFF" d="M512,32c0,64-96,192-320,192V96L0,288l192,192V352C368.438,352,512,208.438,512,32z"/></svg>');
   background-size: cover;
+  transition: all 0.5s linear;
+}
+
+#arrow:hover
+{
+  background:
+    url('data:image/svg+xml;utf8,<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="250px" height="150px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#FFCF39" d="M512,32c0,64-96,192-320,192V96L0,288l192,192V352C368.438,352,512,208.438,512,32z"/></svg>');
+  background-size: cover;
+
 }
 
 .movie-list-item{
@@ -160,11 +205,28 @@ body {
   margin-left: 90px;
 }
 
+.star-window
+{
+  background: url("../img/star-icon.png");
+  margin-top: 35px;
+  margin-left: 30px;
+  height: 35px;
+  float: left;
+}
+
 .rateNumber
 {
   margin-top: 5px;
   margin-left: 3px;
   font-size: 20px;
+  color: yellow;
+}
+
+.rateNumber-window
+{
+  float: left;
+  margin-top: 30px;
+  margin-left: 50px;
   color: yellow;
 }
 

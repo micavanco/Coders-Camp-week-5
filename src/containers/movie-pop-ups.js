@@ -166,6 +166,12 @@ class MoviePopUp extends Component
     const background = document.getElementById('description-background');
     background.style.background = 'url(\"https://image.tmdb.org/t/p/w300/'+this.props.movie.poster_path+'\") no-repeat';
     background.style.backgroundSize = "cover";
+    content.innerHTML = "<img class=\"poster-inside\" src=\"https://image.tmdb.org/t/p/w300/"+this.props.movie.poster_path+"\"/>"+
+      "<h1 class='poster-title'>"+this.props.movie.original_title+' ('+this.props.movie.release_date.substring(0,4)+')'+"</h1>" +
+    "<h1 class='rateNumber-window'>"+this.props.movie.vote_average+"</h1>"+
+    "<div class=\"star-window\" style=\"width: "+this.props.movie.vote_average*15+"px;\"></div>"+
+    "<h2>Description:</h2>"+
+    "<div class='window-p'>"+this.props.movie.overview+"</div>";
     content.appendChild(button);
   }
 

@@ -21,13 +21,13 @@ class MoviePopUp extends Component
       </div>;
 
     return(
-      <div className="movie-pop-ups" >
-        <h1>{ this.props.movie.original_title}</h1>
-        <div className="ratings">
-          <p>Rating:   <span className="rateNumber">{ this.props.movie.vote_average}</span></p>
-          <div className="star" style={{width: this.props.movie.vote_average*15}}></div>
+      <div className="movie-pop-ups" onClick={this.onWindowClick.bind(this)}>
+        <h1 onClick={this.onWindowClick.bind(this)}>{ this.props.movie.original_title}</h1>
+        <div className="ratings" onClick={this.onWindowClick.bind(this)}>
+          <p onClick={this.onWindowClick.bind(this)}>Rating:   <span className="rateNumber" onClick={this.onWindowClick.bind(this)}>{ this.props.movie.vote_average}</span></p>
+          <div className="star" style={{width: this.props.movie.vote_average*15}} onClick={this.onWindowClick.bind(this)}></div>
         </div>
-        <p>{ this.props.movie.overview }</p>
+        <p onClick={this.onWindowClick.bind(this)}>{ this.props.movie.overview }</p>
         <div className="hiddenId"><h2>{ this.props.movie.id }</h2></div>
         {button}
       </div>
@@ -151,6 +151,22 @@ class MoviePopUp extends Component
     if(document.querySelector('.selected-category').id === 'favorites')
       e.target.parentElement.parentElement.parentElement.style.display = 'none';
 
+  }
+
+  onWindowClick()
+  {
+    const content = document.getElementById('description-box');
+    content.innerHTML = '';
+    const button = document.createElement('div');
+    button.id = "arrow";
+    button.addEventListener('click', function () {
+      document.getElementById('description-container').style.display = "none";
+    });
+    document.getElementById('description-container').style.display = "block";
+    const background = document.getElementById('description-background');
+    background.style.background = 'url(\"https://image.tmdb.org/t/p/w300/'+this.props.movie.poster_path+'\") no-repeat';
+    background.style.backgroundSize = "cover";
+    content.appendChild(button);
   }
 
 }

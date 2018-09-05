@@ -51,6 +51,7 @@ onLeave(e)
         <ul className="list-container">
           {this.movieItems()}
         </ul>
+        <div id="description-container"><div id="description-background"></div><div id="description-box"></div></div>
       </div>
     );
   }

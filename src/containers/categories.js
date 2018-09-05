@@ -42,6 +42,7 @@ class Categories extends Component {
           <li id="now_playing" className="category-item" onClick={this.onClickHandle}>Now Playing</li>
           <li id="upcoming" className="category-item" onClick={this.onClickHandle}>Up Coming</li>
           <li id="favorites" className="category-item" onClick={this.onClickHandle}>My Favorites</li>
+          <li id="search" className="category-item search-item" onClick={this.onClickHandle}>My Favorites</li>
         </ul>
       </div>
     );

@@ -33,6 +33,11 @@ body {
   cursor: pointer;
 }
 
+.search-item
+{
+  display: none;
+}
+
 .selected-category{
   border-bottom: 1px solid #FFFFFF;
 }

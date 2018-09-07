@@ -9,10 +9,34 @@ class Categories extends Component {
   constructor(props) {
     super(props);
 
-    let movies = new Array();
-    let added = new Array();
+    const movies = new Array();
+    const added = new Array();
     localStorage.setItem('movies', movies);
     localStorage.setItem('added', added);
+    localStorage.setItem('28', 'Action');
+    localStorage.setItem('12', 'Adventure');
+    localStorage.setItem('16', 'Animation');
+    localStorage.setItem('35', 'Comedy');
+
+    localStorage.setItem('80', 'Crime');
+    localStorage.setItem('99', 'Documentary');
+    localStorage.setItem('18', 'Drama');
+    localStorage.setItem('10751', 'Family');
+
+    localStorage.setItem('14', 'Fantasy');
+    localStorage.setItem('36', 'History');
+    localStorage.setItem('27', 'Horror');
+    localStorage.setItem('10402', 'Music');
+
+    localStorage.setItem('9648', 'Mystery');
+    localStorage.setItem('10749', 'Romance');
+    localStorage.setItem('878', 'Science Fiction');
+    localStorage.setItem('10770', 'TV Movie');
+
+    localStorage.setItem('53', 'Thriller');
+    localStorage.setItem('10752', 'War');
+    localStorage.setItem('37', 'Western');
+
 
     this.onClickHandle = this.onClickHandle.bind(this);
   }

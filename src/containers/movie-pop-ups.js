@@ -1,4 +1,5 @@
 import React,{ Component } from 'react';
+import axios from 'axios';
 
 class MoviePopUp extends Component
 {
@@ -56,6 +57,7 @@ class MoviePopUp extends Component
 
   Click(e)
   {
+    e.stopPropagation();
     if(e.target.className === 'add-favorites')
     {
       e.target.classList.remove('add-favorites');
@@ -117,6 +119,7 @@ class MoviePopUp extends Component
 
   rmClick(e)
   {
+    e.stopPropagation();
     e.target.classList.add('add-favorites');
     e.target.classList.remove('remove-favorites');
     e.target.nextElementSibling.innerText = 'Add to favorites';
@@ -153,8 +156,21 @@ class MoviePopUp extends Component
 
   }
 
-  onWindowClick()
+  onWindowClick(e)
   {
+    let pointer = this.onAxiosLoad.bind(this);
+    e.stopPropagation();
+
+    axios.get('https://api.themoviedb.org/3/movie/'+this.props.movie.id+'/videos?api_key=fd067333da9722a67e0a78739ccecbf1&language=en-US')
+      .then(function (response) {
+        pointer(response);
+      })
+      .catch(function (error) {
+          console.log(error);
+      });
+  }
+
+  onAxiosLoad (response) {
     const content = document.getElementById('description-box');
     content.innerHTML = '';
     const button = document.createElement('div');
@@ -166,12 +182,35 @@ class MoviePopUp extends Component
     const background = document.getElementById('description-background');
     background.style.background = 'url(\"https://image.tmdb.org/t/p/w300/'+this.props.movie.poster_path+'\") no-repeat';
     background.style.backgroundSize = "cover";
+
+    let genre1, genre2;
+    if(this.props.movie.genre_ids[1] != null)genre1=' &bull; '+localStorage.getItem(this.props.movie.genre_ids[1]);
+    else genre1='';
+    if(this.props.movie.genre_ids[2] != null)genre2=' &bull; '+localStorage.getItem(this.props.movie.genre_ids[2]);
+    else genre2='';
+
+    let frame;
+    if(response.data.results.length > 0)
+      frame = "<iframe id=\"player\" type=\"text/html\""+
+        "  src=\"https://www.youtube.com/embed/"+response.data.results[0].key+"\""+
+        "  frameborder=\"0\"" +
+        "  style=\"width: 90%;height: 300px;text-align:center;position:absolute;max-width: 640px\">"+
+        "</iframe>";
+
+    else frame = '<p>Trailer not available...</p>';
     content.innerHTML = "<img class=\"poster-inside\" src=\"https://image.tmdb.org/t/p/w300/"+this.props.movie.poster_path+"\"/>"+
-      "<h1 class='poster-title'>"+this.props.movie.original_title+' ('+this.props.movie.release_date.substring(0,4)+')'+"</h1>" +
-    "<h1 class='rateNumber-window'>"+this.props.movie.vote_average+"</h1>"+
-    "<div class=\"star-window\" style=\"width: "+this.props.movie.vote_average*15+"px;\"></div>"+
-    "<h2>Description:</h2>"+
-    "<div class='window-p'>"+this.props.movie.overview+"</div>";
+      "<div class='description-section'><h1 class='poster-title'>"+this.props.movie.original_title+' ('+this.props.movie.release_date.substring(0,4)+')'+"</h1>" +
+      "<h1 class='rateNumber-window'>"+this.props.movie.vote_average+"</h1>"+
+      "<div class=\"star-window\" style=\"width: "+this.props.movie.vote_average*15+"px;\"></div>"+
+      "<h3>("+this.props.movie.vote_count+")</h3>"+
+      "<h2>Description:</h2>"+
+      "<div class='window-p'>"+this.props.movie.overview+"</div>"+
+      "<h2>Generes:</h2>"+
+      "<div class='window-p'>"+localStorage.getItem(this.props.movie.genre_ids[0])+genre1+genre2+
+      "</div>"+
+      "<h2>Trailer:</h2>"+
+      frame+
+      "</div>";
     content.appendChild(button);
   }
 

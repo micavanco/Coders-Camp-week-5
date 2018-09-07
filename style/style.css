@@ -96,44 +96,71 @@ body {
 {
   position: fixed;
   width: 85%;
-  height: 600px;
+  height: 70%;
   background-color: black;
   z-index: 10;
   top: 200px;
   left: 130px;
+  display: flex;
 }
 
-#description-box h2
+.description-section
 {
-  float: left;
-  font-size: 24px;
-  margin-right: 580px;
-  margin-left: 50px;
+  margin-top: 20px;
+  margin-left: 500px;
+  height: 94%;
+  position: absolute;
+  overflow-y: scroll;
+}
+
+.description-section h2
+{
+  margin-bottom: 0;
+  width: 150px;
+  font-size: 22px;
   color: #ffcf39;
+}
+
+.description-section h3
+{
+  width: 50px;
+  float: left;
+  margin-top: 32px;
+  margin-left: 30px;
+  font-size: 22px;
 }
 
 .window-p
 {
-  margin-left: 550px;
-  margin-right: 60px;
-  margin-top: 140px;
+  margin-bottom: 10px;
   text-align: justify-all;
 }
 
 .poster-inside
 {
-  margin-top: 30px;
-  margin-left: 40px;
+  margin: 20px;
+  position: absolute;
   width: 450px;
-  height: 540px;
-  float: left;
+  height: 94%;
 }
 
-.poster-title
+.star-window
 {
-  margin-top: 30px;
-  margin-left: 140px;
   float: left;
+  margin-left: 10px;
+  margin-top: 25px;
+  margin-bottom: 20px;
+  background: url("../img/star-icon.png");
+  height: 35px;
+}
+
+.rateNumber-window
+{
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  float: left;
+  color: yellow;
 }
 
 #arrow
@@ -205,28 +232,11 @@ body {
   margin-left: 90px;
 }
 
-.star-window
-{
-  background: url("../img/star-icon.png");
-  margin-top: 35px;
-  margin-left: 30px;
-  height: 35px;
-  float: left;
-}
-
 .rateNumber
 {
   margin-top: 5px;
   margin-left: 3px;
   font-size: 20px;
-  color: yellow;
-}
-
-.rateNumber-window
-{
-  float: left;
-  margin-top: 30px;
-  margin-left: 50px;
   color: yellow;
 }
 
@@ -306,4 +316,114 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #ba8c33;
+}
+
+@media only screen and (min-width: 330px) and (max-width: 1160px)
+{
+  .poster-inside {
+    float: left;
+    height: 640px;
+    width: 90%;
+  }
+
+  .description-section
+  {
+    clear: left;
+    margin-left: 0;
+    margin-top: 700px;
+    position: initial;
+    width: 100%;
+  }
+
+  #description-box
+  {
+    overflow: scroll;
+    left: 3%;
+    width: 90%;
+    top: 150px;
+  }
+
+  .movie-list-item
+  {
+    margin-left: 4%;
+    width: 90%;
+  }
+
+  .categories
+  {
+    display: initial;
+  }
+
+  #player
+  {
+    width: 90%;
+  }
+
+  #description-container
+  {
+    width: 130%;
+  }
+
+  #description-background
+  {
+    width: 130%;
+  }
+
+}
+
+@media only screen and (max-width: 330px)
+{
+  .poster-inside {
+    float: left;
+    height: 640px;
+    width: 90%;
+  }
+
+  .description-section
+  {
+    clear: left;
+    margin-left: 0;
+    margin-top: 700px;
+    position: initial;
+    width: 100%;
+  }
+
+  #description-box
+  {
+    top: 130px;
+    overflow: scroll;
+    left: 5px;
+    width: 90%;
+  }
+
+  .movie-list-item, .poster
+  {
+    margin-left: 5%;
+    width: 90%;
+  }
+
+  .categories
+  {
+    display: initial;
+  }
+
+  #player
+  {
+    width: 90%;
+  }
+
+  #description-container
+  {
+    width: 120%;
+  }
+
+  #description-background
+  {
+    width: 120%;
+  }
+
+  #arrow
+  {
+    top: 0;
+  }
 }
